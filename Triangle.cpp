@@ -22,6 +22,10 @@ double distance(const Point &p1, const Point &p2){
     return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 }
 
+bool Triangle::containsByArea(const Point &point) const {
+    return sign(area() - (Triangle{A, B, point}.area() + Triangle{B, C, point}.area() + Triangle{A, C, point}.area())) == 0;
+}
+
 bool Triangle::contains(const Point &point) const {
     const double sign1 = sign(determinant(point - A, B - A));
     const double sign2 = sign(determinant(point - B, C - B));
@@ -70,7 +74,8 @@ void handler(){
     for(int i = 0; i < amountPoints; i++){
         cin >> temp.x;
         cin >> temp.y;
-        cout << (triangle.contains(temp) ? "Точка належить трикутнику" : "Точка не належить трикутнику");
+        cout << (triangle.contains(temp) ? "Точка належить трикутнику\n" : "Точка не належить трикутнику\n");
+        cout << "за методом площ: " << (triangle.containsByArea(temp) ? "Точка належить трикутнику" : "Точка не належить трикутнику");
         cout << endl;
     }
 
