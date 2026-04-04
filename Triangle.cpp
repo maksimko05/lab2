@@ -23,6 +23,10 @@ double distance(const Point &p1, const Point &p2){
 }
 
 bool Triangle::containsByArea(const Point &point) const {
+    cout << area() << endl;
+    cout << Triangle{A, B, point}.area() << endl;
+    cout << Triangle{B, C, point}.area() << endl;
+    cout << Triangle{A, C, point}.area() << endl;
     return sign(area() - (Triangle{A, B, point}.area() + Triangle{B, C, point}.area() + Triangle{A, C, point}.area())) == 0;
 }
 
