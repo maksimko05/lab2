@@ -18,8 +18,8 @@ struct Triangle {
   
     double area() const;
 
-    bool contains(const Point &point) const;
-    bool containsByArea(const Point &point) const;
+    int contains(const Point &point) const;
+    int containsByArea(const Point &point) const;
 };
 
 void handler();
